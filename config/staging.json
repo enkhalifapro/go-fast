@@ -1,0 +1,8 @@
+{
+	"dbUri": "mongodb://root:123456@162.243.1.78:19860",
+	"dbName": "knexpert-staging",
+	"dialMongoWithInfo": "false",
+	"port": "3040",
+	"postmarkKey": "232f02b1-a979-43ed-9e1e-e7bbe560cd6e",
+	"domain": ""
+}
