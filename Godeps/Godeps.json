@@ -1,6 +1,7 @@
 {
-	"ImportPath": "github.com/enkhalifapro/go-example",
+	"ImportPath": "github.com/enkhalifapro/go-fast",
 	"GoVersion": "go1.6",
+	"GodepVersion": "v71",
 	"Packages": [
 		"./..."
 	],
@@ -11,7 +12,45 @@
 			"Rev": "5c4df71dfe9ac89ef6287afc05e4c1b16ae65a1e"
 		},
 		{
+			"ImportPath": "github.com/enkhalifapro/go-example/controllers",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
+			"ImportPath": "github.com/enkhalifapro/go-example/mocks",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
+			"ImportPath": "github.com/enkhalifapro/go-example/models",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
+			"ImportPath": "github.com/enkhalifapro/go-example/services",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
+			"ImportPath": "github.com/enkhalifapro/go-example/utilities",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
+			"ImportPath": "github.com/enkhalifapro/go-example/utilities/security",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
+			"ImportPath": "github.com/enkhalifapro/go-example/viewModels",
+			"Rev": "cc74c05334573676020ff49a347ee0c16defeaa9"
+		},
+		{
 			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.0rc1-148-g52fcc5d",
+			"Rev": "52fcc5dbf6e94df33ad313858fb94b713e9d1b4a"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.0rc1-148-g52fcc5d",
+			"Rev": "52fcc5dbf6e94df33ad313858fb94b713e9d1b4a"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
 			"Comment": "v1.0rc1-148-g52fcc5d",
 			"Rev": "52fcc5dbf6e94df33ad313858fb94b713e9d1b4a"
 		},
@@ -22,6 +61,38 @@
 		},
 		{
 			"ImportPath": "github.com/hashicorp/hcl",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/ast",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/parser",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/scanner",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/strconv",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/token",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/json/parser",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/json/scanner",
+			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/json/token",
 			"Rev": "197e8d3cf42199cfd53cd775deb37f3637234635"
 		},
 		{
@@ -69,7 +140,27 @@
 			"Rev": "2d74a419fbe076f8c76ed8b1c7c633a676c5dc63"
 		},
 		{
+			"ImportPath": "github.com/smartystreets/assertions/internal/go-render/render",
+			"Comment": "1.6.0-2-g2d74a41",
+			"Rev": "2d74a419fbe076f8c76ed8b1c7c633a676c5dc63"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions/internal/oglematchers",
+			"Comment": "1.6.0-2-g2d74a41",
+			"Rev": "2d74a419fbe076f8c76ed8b1c7c633a676c5dc63"
+		},
+		{
 			"ImportPath": "github.com/smartystreets/goconvey/convey",
+			"Comment": "1.6.1-16-g55d548b",
+			"Rev": "55d548bcbd33d0fdfbd8844ede638af868cdf23e"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey/gotest",
+			"Comment": "1.6.1-16-g55d548b",
+			"Rev": "55d548bcbd33d0fdfbd8844ede638af868cdf23e"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey/reporting",
 			"Comment": "1.6.1-16-g55d548b",
 			"Rev": "55d548bcbd33d0fdfbd8844ede638af868cdf23e"
 		},
@@ -117,6 +208,21 @@
 		},
 		{
 			"ImportPath": "gopkg.in/mgo.v2",
+			"Comment": "r2015.12.06",
+			"Rev": "e30de8ac9ae3b30df7065f766c71f88bba7d4e49"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/bson",
+			"Comment": "r2015.12.06",
+			"Rev": "e30de8ac9ae3b30df7065f766c71f88bba7d4e49"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/internal/sasl",
+			"Comment": "r2015.12.06",
+			"Rev": "e30de8ac9ae3b30df7065f766c71f88bba7d4e49"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/internal/scram",
 			"Comment": "r2015.12.06",
 			"Rev": "e30de8ac9ae3b30df7065f766c71f88bba7d4e49"
 		},
