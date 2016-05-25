@@ -1,4 +1,4 @@
-# go-example
+# Go-Fast
 
  starter template for people who want start creating we app by using golang
 
