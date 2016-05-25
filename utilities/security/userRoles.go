@@ -1,11 +1,12 @@
 package security
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
-	"github.com/enkhalifapro/go-example/utilities"
-	"github.com/enkhalifapro/go-example/services"
+
+	"github.com/enkhalifapro/go-fast/services"
+	"github.com/enkhalifapro/go-fast/utilities"
+	"github.com/gin-gonic/gin"
 )
 
 func validUser(sessionToken string) bool {
@@ -21,9 +22,9 @@ func BasicUser(c *gin.Context) {
 	authToken = strings.Replace(authToken, "Bearer ", "", -1)
 	if validUser(authToken) == false {
 		//c.AbortWithError(http.StatusInternalServerError, errors.New("Invalid user session"))
-		c.JSON(http.StatusUnauthorized, gin.H{"error":"unauthoirzed user"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unauthoirzed user"})
 		c.Abort()
-		return;
+		return
 	}
 	c.Next()
 }

@@ -1,12 +1,13 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"log"
-	"github.com/enkhalifapro/go-example/utilities"
-	"github.com/enkhalifapro/go-example/controllers"
-	"github.com/enkhalifapro/go-example/utilities/security"
-	"github.com/enkhalifapro/go-example/services"
+
+	"github.com/enkhalifapro/go-fast/controllers"
+	"github.com/enkhalifapro/go-fast/services"
+	"github.com/enkhalifapro/go-fast/utilities"
+	"github.com/enkhalifapro/go-fast/utilities/security"
+	"github.com/gin-gonic/gin"
 )
 
 func GetPort() string {

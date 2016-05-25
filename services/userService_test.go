@@ -2,12 +2,13 @@ package services
 
 import (
 	"testing"
+
+	"github.com/enkhalifapro/go-fast/mocks"
+	"github.com/enkhalifapro/go-fast/models"
+	"github.com/enkhalifapro/go-fast/utilities"
 	. "github.com/smartystreets/goconvey/convey"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"github.com/enkhalifapro/go-example/utilities"
-	"github.com/enkhalifapro/go-example/mocks"
-	"github.com/enkhalifapro/go-example/models"
 )
 
 func setupClearUserCollection(configUtil utilities.IConfigUtil) {
@@ -28,12 +29,11 @@ func setupAddfakeUser(configUtil utilities.IConfigUtil, token string) {
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(configUtil.GetConfig("dbName")).C("users")
 	// clear efficiencies collection
-	err := collection.Insert(models.User{Id:bson.NewObjectId(), UserName:"ayman"})
+	err := collection.Insert(models.User{Id: bson.NewObjectId(), UserName: "ayman"})
 	if err != nil {
 		panic(err)
 	}
 }
-
 
 func TestFindById(t *testing.T) {
 	Convey("Given I have no users", t, func() {

@@ -2,13 +2,14 @@ package services
 
 import (
 	"testing"
+	"time"
+
+	"github.com/enkhalifapro/go-fast/mocks"
+	"github.com/enkhalifapro/go-fast/models"
+	"github.com/enkhalifapro/go-fast/utilities"
 	. "github.com/smartystreets/goconvey/convey"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"time"
-	"github.com/enkhalifapro/go-example/utilities"
-	"github.com/enkhalifapro/go-example/models"
-	"github.com/enkhalifapro/go-example/mocks"
 )
 
 func setupClearSessionCollection(configUtil utilities.IConfigUtil) {
@@ -29,7 +30,7 @@ func setupAddfakeUserSession(configUtil utilities.IConfigUtil, token string) {
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(configUtil.GetConfig("dbName")).C("sessions")
 	// clear efficiencies collection
-	err := collection.Insert(models.Session{Id:bson.NewObjectId(), Token:token, ExpiryDate:time.Now().UTC().Add(time.Hour * 24)})
+	err := collection.Insert(models.Session{Id: bson.NewObjectId(), Token: token, ExpiryDate: time.Now().UTC().Add(time.Hour * 24)})
 	if err != nil {
 		panic(err)
 	}

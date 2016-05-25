@@ -1,17 +1,18 @@
 package services
 
 import (
-	"time"
-	"fmt"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"io/ioutil"
 	"net"
-	"github.com/enkhalifapro/go-example/models"
-	"github.com/enkhalifapro/go-example/viewModels"
-	"github.com/enkhalifapro/go-example/utilities"
+	"time"
+
+	"github.com/enkhalifapro/go-fast/models"
+	"github.com/enkhalifapro/go-fast/utilities"
+	"github.com/enkhalifapro/go-fast/viewModels"
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type IUserService interface {
@@ -140,7 +141,7 @@ func (r UserService) Insert(user *models.User) error {
 	collection := session.DB(r.dbName).C(r.collectionName)
 	err := collection.Insert(user)
 	// send verify email
-	globalVars := map[string]interface{}{"FNAME": user.FirstName, "ACTIVATE_ACCOUNT":"google.com/verify/registration?token=" + user.VerifyToken + "&email=" + user.Email}
+	globalVars := map[string]interface{}{"FNAME": user.FirstName, "ACTIVATE_ACCOUNT": "google.com/verify/registration?token=" + user.VerifyToken + "&email=" + user.Email}
 
 	_, mailErr := r.mailUtil.SendTemplate(user.Email, "john@curtisdigital.com", "John Curtis", "Verify your e-mail", globalVars, 606061)
 	if mailErr != nil {
@@ -152,7 +153,7 @@ func (r UserService) Insert(user *models.User) error {
 
 func (r UserService) ResendVerifyEmail(user *models.User) error {
 	// send verify email
-	globalVars := map[string]interface{}{"FNAME": user.FirstName, "ACTIVATE_ACCOUNT":"google.com/verify/registration?token=" + user.VerifyToken + "&email=" + user.Email}
+	globalVars := map[string]interface{}{"FNAME": user.FirstName, "ACTIVATE_ACCOUNT": "google.com/verify/registration?token=" + user.VerifyToken + "&email=" + user.Email}
 
 	_, mailErr := r.mailUtil.SendTemplate(user.Email, "john@curtisdigital.com", "John Curtis", "Verify your e-mail", globalVars, 606061)
 	if mailErr != nil {
@@ -177,8 +178,8 @@ func (r UserService) NewPasswordResetToken(user *models.User) (error, *models.Pa
 	collection := session.DB(r.dbName).C("passwordresettokens")
 
 	// expire all old token related to user
-	_, err := collection.UpdateAll(bson.M{"userid":user.Id.Hex()}, bson.M{"$set": bson.M{
-		"isvalid":false}})
+	_, err := collection.UpdateAll(bson.M{"userid": user.Id.Hex()}, bson.M{"$set": bson.M{
+		"isvalid": false}})
 
 	if err != nil && err.Error() != "not found" {
 		return err, nil
@@ -196,7 +197,7 @@ func (r UserService) SendPasswordResetEmail(user *models.User) error {
 		return err
 	}
 	// send verify email
-	globalVars := map[string]interface{}{"FNAME": user.FirstName, "RESET_PASSWORD":"http://google.com/password/reset?token=" + token.Token + "&email=" + user.Email}
+	globalVars := map[string]interface{}{"FNAME": user.FirstName, "RESET_PASSWORD": "http://google.com/password/reset?token=" + token.Token + "&email=" + user.Email}
 
 	_, mailErr := r.mailUtil.SendTemplate(user.Email, "john@curtisdigital.com", "John Curtis", "Reset your password", globalVars, 613062)
 	if mailErr != nil {
@@ -213,7 +214,7 @@ func (r UserService) ValidatePasswordResetToken(token string) (err error, userId
 	collection := session.DB(r.dbName).C("passwordresettokens")
 
 	passwordResetToken := models.PasswordResetToken{}
-	err = collection.Find(bson.M{"token":token, "isvalid":true}).One(&passwordResetToken)
+	err = collection.Find(bson.M{"token": token, "isvalid": true}).One(&passwordResetToken)
 	if err != nil {
 		return err, ""
 	}
@@ -226,7 +227,7 @@ func (r UserService) ValidatePasswordResetToken(token string) (err error, userId
 
 func (r UserService) Login(loginViewModel *viewModels.LoginViewModel) bool {
 	err, user := r.FindOne(&bson.M{
-		"email":loginViewModel.Email})
+		"email": loginViewModel.Email})
 	if err != nil {
 		fmt.Println(err)
 		return false
@@ -263,14 +264,14 @@ func (r UserService) UpdateById(updaterId string, userId string, newUser *viewMo
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(r.dbName).C(r.collectionName)
 	err := collection.UpdateId(bson.ObjectIdHex(userId), bson.M{"$set": bson.M{
-		"username":newUser.UserName,
-		"firstname":newUser.FirstName,
-		"lastname":newUser.LastName,
-		"email":newUser.Email,
-		"image":newUser.Image,
-		"roleid":newUser.RoleId,
-		"updaterid":updaterId,
-		"updatedat":time.Now().UTC()}})
+		"username":  newUser.UserName,
+		"firstname": newUser.FirstName,
+		"lastname":  newUser.LastName,
+		"email":     newUser.Email,
+		"image":     newUser.Image,
+		"roleid":    newUser.RoleId,
+		"updaterid": updaterId,
+		"updatedat": time.Now().UTC()}})
 	return err
 }
 
@@ -280,9 +281,9 @@ func (r UserService) ChangePassword(updaterId string, userId string, newPassword
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(r.dbName).C(r.collectionName)
 	err := collection.UpdateId(bson.ObjectIdHex(userId), bson.M{"$set": bson.M{
-		"password":r.cryptUtil.Bcrypt(newPassword),
-		"updaterid":updaterId,
-		"updatedat":time.Now().UTC()}})
+		"password":  r.cryptUtil.Bcrypt(newPassword),
+		"updaterid": updaterId,
+		"updatedat": time.Now().UTC()}})
 	return err
 }
 
@@ -291,7 +292,7 @@ func (r UserService) VerifyEmail(token string) error {
 	defer session.Close()
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(r.dbName).C(r.collectionName)
-	err := collection.Update(bson.M{"verifytoken":token}, bson.M{"$set": bson.M{"emailverified": true}})
+	err := collection.Update(bson.M{"verifytoken": token}, bson.M{"$set": bson.M{"emailverified": true}})
 	return err
 }
 

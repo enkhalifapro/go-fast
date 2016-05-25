@@ -1,16 +1,17 @@
 package services
 
 import (
-	"time"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
+	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"io/ioutil"
 	"net"
-	"fmt"
-	"crypto/tls"
-	"github.com/enkhalifapro/go-example/utilities"
-	"github.com/enkhalifapro/go-example/models"
+	"time"
+
+	"github.com/enkhalifapro/go-fast/models"
+	"github.com/enkhalifapro/go-fast/utilities"
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type SessionService struct {
@@ -93,6 +94,6 @@ func (r SessionService) Logout(token string) error {
 	defer session.Close()
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(r.dbName).C(r.collectionName)
-	err := collection.Update(bson.M{"token":token}, bson.M{"$set": bson.M{"expirydate": time.Now().UTC()}})
+	err := collection.Update(bson.M{"token": token}, bson.M{"$set": bson.M{"expirydate": time.Now().UTC()}})
 	return err
 }
