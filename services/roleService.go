@@ -1,16 +1,17 @@
 package services
 
 import (
-	"fmt"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"io/ioutil"
 	"net"
 	"time"
-	"github.com/enkhalifapro/go-example/models"
-	"github.com/enkhalifapro/go-example/utilities"
+
+	"github.com/enkhalifapro/go-fast/models"
+	"github.com/enkhalifapro/go-fast/utilities"
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type IRoleService interface {
@@ -103,11 +104,11 @@ func (r RoleService) UpdateByName(updaterId string, roleName string, newRole *mo
 	defer session.Close()
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(r.dbName).C(r.collectionName)
-	err := collection.Update(bson.M{"slug":roleName}, bson.M{"$set": bson.M{
-		"name":newRole.Name,
-		"slug":r.slugUtil.GetSlug(newRole.Name),
-		"updaterid":updaterId,
-		"updatedat":time.Now().UTC()}})
+	err := collection.Update(bson.M{"slug": roleName}, bson.M{"$set": bson.M{
+		"name":      newRole.Name,
+		"slug":      r.slugUtil.GetSlug(newRole.Name),
+		"updaterid": updaterId,
+		"updatedat": time.Now().UTC()}})
 	return err
 }
 
@@ -116,6 +117,6 @@ func (r RoleService) DeleteByName(name string) error {
 	defer session.Close()
 	session.SetSafe(&mgo.Safe{})
 	collection := session.DB(r.dbName).C(r.collectionName)
-	err := collection.Remove(bson.M{"slug":name})
+	err := collection.Remove(bson.M{"slug": name})
 	return err
 }

@@ -2,8 +2,9 @@ package utilities
 
 import (
 	"testing"
+
+	"github.com/enkhalifapro/go-fast/mocks"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/enkhalifapro/go-example/mocks"
 )
 
 func TestSendTemplate(t *testing.T) {
@@ -14,7 +15,7 @@ func TestSendTemplate(t *testing.T) {
 		Convey("When send", func() {
 			// send verify email
 			userName := "ayman"
-			globalVars := map[string]interface{}{"FNAME": userName, "ACTIVATE_ACCOUNT":"google.com/verify/registration?token=testToken&email=test@mail.com"}
+			globalVars := map[string]interface{}{"FNAME": userName, "ACTIVATE_ACCOUNT": "google.com/verify/registration?token=testToken&email=test@mail.com"}
 
 			_, mailErr := mailUtil.SendTemplate("enkhalifapro@gmail.com", "john@curtisdigital.com", "John Curtis", "Verify your e-mail", globalVars, 606061)
 			if mailErr != nil {
