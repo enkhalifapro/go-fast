@@ -17,7 +17,7 @@ func TestSendTemplate(t *testing.T) {
 			userName := "ayman"
 			globalVars := map[string]interface{}{"FNAME": userName, "ACTIVATE_ACCOUNT": "google.com/verify/registration?token=testToken&email=test@mail.com"}
 
-			_, mailErr := mailUtil.SendTemplate("enkhalifapro@gmail.com", "john@curtisdigital.com", "John Curtis", "Verify your e-mail", globalVars, 606061)
+			_, mailErr := mailUtil.SendTemplate("enkhalifapro@gmail.com", "enkhalifapro@gmail.com", "John Curtis", "Verify your e-mail", globalVars, 606061)
 			if mailErr != nil {
 				panic(mailErr)
 			}
