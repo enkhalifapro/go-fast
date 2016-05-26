@@ -2,7 +2,10 @@
 
  starter template for people who want to start creating web apps by using golang
 
- with fully testable code arechitecture
+built on top of [Gin framework](https://github.com/gin-gonic/gin) with fully testable code arechitecture according to [Model-View-Controller (MVC)](https://en.wikipedia.org/wiki/Model–view–controller) pattern.
+
+## Features
+
 
 ## License
 
