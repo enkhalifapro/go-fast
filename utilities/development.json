@@ -1,5 +1,5 @@
 {
-	"dbUri": "mongodb://root:123456@162.243.1.78:19860",
-	"dbName": "knexpert-test",
+	"dbUri": "mongodb://localhost:27017",
+	"dbName": "test",
 	"dialMongoWithInfo": "false"
 }

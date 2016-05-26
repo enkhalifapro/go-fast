@@ -1,6 +1,6 @@
 {
-	"dbUri": "localhost:27017",
-	"dbName": "PROD",
+	"dbUri": "mongodb://localhost:27017",
+	"dbName": "dev",
 	"dialMongoWithInfo": "false",
 	"port": "3030",
 	"postmarkKey": "232f02b1-a979-43ed-9e1e-e7bbe560cd6e",

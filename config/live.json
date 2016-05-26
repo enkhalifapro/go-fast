@@ -1,7 +1,7 @@
 {
-	"dbUri": "mongodb://knexpertApp:4rCUhkLgGJNg@aws-us-east-1-portal.14.dblayer.com:11152,aws-us-east-1-portal.13.dblayer.com:11188/PROD",
-	"dbName": "PROD",
-	"dialMongoWithInfo": "true",
+	"dbUri": "mongodb://localhost:27017",
+	"dbName": "live",
+	"dialMongoWithInfo": "false",
 	"port": "80",
 	"postmarkKey": "232f02b1-a979-43ed-9e1e-e7bbe560cd6e",
 	"path": "",
