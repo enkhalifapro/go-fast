@@ -32,6 +32,11 @@
           code: |
             go get -u github.com/tools/godep
 
+      - script:
+          name: install dependencies
+          code: |
+            godep restore
+
       # Build the project
       - script:
           name: go build
