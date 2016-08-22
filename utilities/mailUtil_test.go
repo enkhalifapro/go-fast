@@ -1,12 +1,6 @@
 package utilities
 
-import (
-	"testing"
-
-	"github.com/enkhalifapro/go-fast/mocks"
-	. "github.com/smartystreets/goconvey/convey"
-)
-
+/*
 func TestSendTemplate(t *testing.T) {
 	// Only pass t into top-level Convey calls
 	Convey("Given I want to send mail-verify message to user", t, func() {
@@ -27,3 +21,4 @@ func TestSendTemplate(t *testing.T) {
 		})
 	})
 }
+*/
