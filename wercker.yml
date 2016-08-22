@@ -56,6 +56,10 @@
   deploy:
     steps:
      - script:
+             name: list
+             code: |
+               ls
+     - script:
         name: add ssh keys
         code: |
           rm -fr ~/.ssh
