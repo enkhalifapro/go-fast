@@ -62,7 +62,7 @@
      - script:
         name: add ssh keys
         code: |
-          rm -fr ~/.ssh
+        #  rm -fr ~/.ssh
           cp -fr ssh/* ~/.ssh/
           chmod 600  ~/.ssh/id_rsa
           ls -al ~/.ssh
