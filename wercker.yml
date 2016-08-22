@@ -59,12 +59,8 @@
              name: list
              code: |
                ls
-     - script:
-        name: add ssh keys
-        code: |
-          cp -fr ssh/* ~/.ssh/
-          chmod 600  ~/.ssh/id_rsa
-          ls -al ~/.ssh
+     - add-ssh-key:
+            keyname: id_rsa.pub
      - script:
              name: deply go-fast
              code: |
