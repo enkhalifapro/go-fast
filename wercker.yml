@@ -33,6 +33,11 @@
             go get -u github.com/tools/godep
 
       - script:
+                name: show path
+                code: |
+                  ls
+
+      - script:
           name: install dependencies
           code: |
             godep restore
