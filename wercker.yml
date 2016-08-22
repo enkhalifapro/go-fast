@@ -53,3 +53,19 @@
           name: go test
           code: |
             go test $(go list ./... | grep -v /vendor/) -v
+  deploy:
+    steps:
+     - script:
+        name: add ssh keys
+        code: |
+          rm -fr ~/.ssh
+          copy new ssh
+          cp -fr ssh/* ~/.ssh/
+          chmod 600  ~/.ssh/id_rsa
+          ls -al ~/.ssh
+     - script:
+             name: deply go-fast
+             code: |
+               ssh root@68.168.99.119 "rm -rf ~/goworkspace/src/github.com/enkhalifapro/go-fast"
+               scp -rp . root@68.168.99.119:~/goworkspace/src/github.com/enkhalifapro/go-fast
+               ssh root@68.168.99.119 "sudo service traxdev restart"
