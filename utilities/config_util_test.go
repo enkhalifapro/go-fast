@@ -10,7 +10,7 @@ func TestGetConfig(t *testing.T) {
 	// act
 	dbName := configUtil.GetConfig("dbName")
 	// assert
-	if dbName != "knexpert-test" {
+	if dbName != "test" {
 		t.Error("Error db name")
 	}
 }
